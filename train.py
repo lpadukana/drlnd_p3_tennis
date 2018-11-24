@@ -28,6 +28,7 @@ class UnityEnvWrapper:
             file_name="Tennis_Linux/Tennis.x86_64",
             no_graphics=no_graphics
         )
+        self.env_info = None
         self.reset()
 
     def brain_name(self):
