@@ -173,7 +173,7 @@ def train_agent(n_episodes=10000, print_every=100, target_score=0.5):
             save(i_episode, scores1, scores2, mean_scores)
             break
 
-    return scores1
+    return mean_scores
 
 
 def main():
@@ -202,10 +202,6 @@ def play():
         action1 = agent1.act(state1, add_noise=False)
         action2 = agent2.act(state2, add_noise=False)
         state, _, _, _ = env.step([action1, action2])
-        # if done:
-        #     break
-
-#     env.close()
 
 
 main()
