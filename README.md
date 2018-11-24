@@ -79,6 +79,10 @@ This will fire up a Unity Environment and run the environment at normal speed su
 
 Checkpoints saved earlier will be loaded so that actions can be predicted by the agents.
 
+## Project Report
+
+Please see the report [here](Report.md)
+
 ## Example Training Run
 
 ```sh
