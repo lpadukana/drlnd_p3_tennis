@@ -12,18 +12,9 @@ def hidden_init(layer):
 
 
 class Actor(nn.Module):
-    """Actor (Policy) Model."""
+    """Policy network"""
 
     def __init__(self, state_size, action_size, seed, fc1_units=200, fc2_units=150):
-        """Initialize parameters and build model.
-        Params
-        ======
-            state_size (int): Dimension of each state
-            action_size (int): Dimension of each action
-            seed (int): Random seed
-            fc1_units (int): Number of nodes in the first hidden layer
-            fc2_units (int): Number of nodes in the second hidden layer
-        """
         super(Actor, self).__init__()
         self.seed = torch.manual_seed(seed)
         self.fc1 = nn.Linear(state_size, fc1_units)
@@ -37,25 +28,16 @@ class Actor(nn.Module):
         self.fc3.weight.data.uniform_(-3e-3, 3e-3)
 
     def forward(self, state):
-        """Build an actor (policy) network that maps states -> actions."""
+        """States -> actions"""
         x = F.relu(self.fc1(state))
         x = F.relu(self.fc2(x))
         return F.tanh(self.fc3(x))
 
 
 class Critic(nn.Module):
-    """Critic (Value) Model."""
+    """Value network"""
 
     def __init__(self, state_size, action_size, seed, fc1_units=200, fc2_units=150):
-        """Initialize parameters and build model.
-        Params
-        ======
-            state_size (int): Dimension of each state
-            action_size (int): Dimension of each action
-            seed (int): Random seed
-            fc1_units (int): Number of nodes in the first hidden layer
-            fc2_units (int): Number of nodes in the second hidden layer
-        """
         super(Critic, self).__init__()
         self.seed = torch.manual_seed(seed)
         self.fc1 = nn.Linear(state_size, fc1_units)
@@ -69,7 +51,7 @@ class Critic(nn.Module):
         self.fc3.weight.data.uniform_(-3e-3, 3e-3)
 
     def forward(self, state, action):
-        """Build a critic (value) network that maps (state, action) pairs -> Q-values."""
+        """(State, Action) pairs -> Q-values."""
         x = F.relu(self.fc1(state))
         x = torch.cat((x, action), dim=1)
         x = F.relu(self.fc2(x))
