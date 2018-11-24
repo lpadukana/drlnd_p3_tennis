@@ -192,7 +192,7 @@ class ReplayBuffer:
         """Randomly sample a batch of experiences from memory"""
         experiences = random.sample(self.memory, k=self.batch_size)
         for e in experiences:
-            assert(e is not None)
+            assert e is not None
 
         states = torch.from_numpy(
             np.vstack([e.state for e in experiences])).float().to(device)
