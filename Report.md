@@ -16,7 +16,7 @@ Different configurations of weight sharing was attempted to see what works best.
 
 Sharing local actor network, local critic nework and the replay buffer across the agents produced the best results.
 
-DDPG is a variation of actor critic methods with some modifications. MADDPG adapts agent training for multiple agents in either collaborative or competitive configurations, or even in a combination of the two with the help of some reward engineering. See [OpenAI team_spirit](https://blog.openai.com/openai-five/) for an example of how this is done!
+DDPG is a variation of actor critic methods. MADDPG adapts agent training for multiple agents in either collaborative or competitive configurations, or even in a combination of the two with the help of some reward engineering. See [OpenAI team_spirit](https://blog.openai.com/openai-five/) for an example of how this is done!
 
 #### Notes about Actor Critic Agents
 
@@ -32,7 +32,7 @@ its own actions and reduce surprises in general (which means they tend to take b
 
 ### Hyperparameters and Implementation Notes
 
-- Overall network architecture: MADDPG
+- Overall network architecture: Multi Agent Deep Deterministic Policy Gradients
 - Optimizer: Adam with a learning rate of 1e-3 for both actor and critic
 - Discount: 0.99
 - Replay buffer size: 1e5
@@ -58,4 +58,5 @@ Mean episode rewards are plotted at the end of training
 
 - Try out more multi-agent environments and algorithm variations
 - Find more real life situations where MADDPG could be applied
-- Research better LR tuning for RL (can we use variable LR schedules, etc.)
+- Continue to research better LR tuning for RL (can we use variable LR schedules, etc.)
+- Adapt the two agent MADDPG implementation to n agents
